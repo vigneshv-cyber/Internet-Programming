@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>registration Form</title>
+  <style>
+    body {
+      font-family: sans-serif;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+
+    textarea {
+      background-color: pink;
+      width: 100%;
+      height: 200px;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+
+    button {
+      background-color: blue;
+      color: #fff;
+      padding: 10px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <h1>Registration Form</h1>
+
+  <form action="/action_page.php" method="post">
+    <input type="text" name="name" placeholder="Name" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <textarea name="message" placeholder="Message" required></textarea>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    // Validate the form before submission
+    function validateForm() {
+      var name = document.forms["myForm"]["name"].value;
+      var email = document.forms["myForm"]["email"].value;
+      var message = document.forms["myForm"]["message"].value;
+
+      // Check if the name field is empty
+      if (name == "") {
+        alert("Please enter your name.");
+        return false;
+      }
+
+      // Check if the email field is empty
+      if (email == "") {
+        alert("Please enter your email address.");
+        return false;
+      }
+
+      // Check if the email address is valid
+      if (!/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)) {
+        alert("Please enter a valid email address.");
+        return false;
+      }
+
+      // Check if the message field is empty
+      if (message == "") {
+        alert("Please enter a message.");
+        return false;
+      }
+
+      // If all the fields are valid, return true
+      return true;
+    }
+
+    // Attach the validateForm() function to the form's submit event
+    document.forms["myForm"].onsubmit = validateForm;
+  </script>
+</body>
+</html>
